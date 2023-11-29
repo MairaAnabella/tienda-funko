@@ -18,8 +18,8 @@ session_start();
 <body>
 	<?php include("desing/header.php"); ?>
 	<div class="main-content">
-		<div class="content-page">
-			<div class="title-section">Productos destacados</div>
+		<div class="content-page" style="display: block;">
+			<div class="title-section">PRODUCTOS DESTACADOS</div>
 			<div class="products-list" id="space-list">
 			</div>
 		</div>

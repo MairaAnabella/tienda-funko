@@ -1,18 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Roboto+Condensed:ital,wght@1,400;1,700&display=swap');
 :root{
-	--main-header-color:rgba(181, 115, 235, 0.92);
+	--main-header-color:#b573ebeb;
     
 	--main-red:#c71212;
 }
 *{
-	font-family: 'Sen', sans-serif;
+	font-family: 'Nunito', sans-serif;
 }
 body,html{
 	margin: 0;
 	padding: 0;
 }
-body{
-    background-color: #f3f3f3;
+.pulse:hover,
+.pulse:focus {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
 }
+@-webkit-keyframes pulse {
+	0% {
+	  box-shadow: 0 0 0 0 var(--hover);
+	}
+  }
+  
+  @keyframes pulse {
+	0% {
+	  box-shadow: 0 0 0 0 var(--hover);
+	}
+  }
+  .pulse {
+	--color: rgb(187, 110, 239);
+	--hover:#ef6eae ;
+  }
+  button {
+	background: none;
+	border: 2px solid;
+	border-radius: 4px;
+	font: inherit;
+	line-height: 1;
+	margin: 0.5em;
+	padding: 1em 2em;
+  }
+  button {
+	color: var(--color);
+	-webkit-transition: 0.25s;
+	transition: 0.25s;
+  }
+  button:hover, button:focus {
+	background-color: #000;
+	border-color: var(--hover);
+	color: #fff;
+  }
+body{
+	background-image: linear-gradient(to right top, #d09cfa, #c992f6, #c388f3, #bc7def, #b573eb);}
 header{
 	height: 60px;
 	padding: 10px;
@@ -36,7 +76,11 @@ header{
 }
 .search-place{
 	width: calc(100% - 440px);
+	height: 70%;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
 	padding: 0px 20px;
 }
 input{
@@ -45,18 +89,20 @@ input{
 	background-color: #fefefe;
 	border:1px solid #ccc;
 	width: calc(100% - 62px);
-	font-family: 'Sen', sans-serif;
+	
 }
 input:placeholder{
 	color: #ccc;
 }
 .search-place input{
+	margin-left: 30%;
 	padding: 10px;
 	font-size: 15px;
+	border-radius: 15px 0 0 15px;
 	background-color: #fefefe;
 	border:1px solid #ccc;
-	width: calc(100% - 62px);
-	font-family: 'Sen', sans-serif;
+	width: calc(50% - 62px);
+	
 }
 .search-place input:placeholder{
 	color: #ccc;
@@ -65,13 +111,14 @@ input:placeholder{
 	padding: 10px;
 	font-size: 15px;
 	background-color: #fefefe;
+	border-radius:0px  15px 15px 0px;
 	border-style: none;
 	border:1px solid #ccc;
 	cursor: pointer;
 }
 .btn-search{
 	width: 40px;
-	color: #333;
+	color: #EA047E;
 }
 .options-place{
 	width: 250px;
@@ -105,6 +152,19 @@ input:placeholder{
     max-width: 1180px;
     flex-wrap: nowrap;
 }
+.content-page2 {
+    margin: auto;
+    padding: 10px;
+    width: calc(100% - 20px);
+    
+    max-width: 1180px;
+    flex-wrap: nowrap;
+}
+.content-page2 section{
+	display: flex;
+	background: #fff;
+}
+
 .content-page section{
 	display: flex;
 	background: #fff;
@@ -141,42 +201,37 @@ input:placeholder{
 	color: #333;
 	font-weight: normal;
 }
-button{
-	border-style: none;
-	border-radius: 5px;
-	padding: 13px 20px;
-	color: #fff;
-	background: #c71212;
-	cursor: pointer;
-	font-size: 16px;
-}
-.part2 button{
-	border-style: none;
-	border-radius: 5px;
-	padding: 13px 20px;
-	color: #fff;
-	background: #c71212;
-	cursor: pointer;
-	font-size: 16px;
-}
+
 .title-section{
+	margin: 15px;
 	padding: 10px 0; 
-	font-size: 20px;
-	color: #666;
-	font-family: 'Sen', sans-serif;
+	font-size: 35px;
+	font-weight: 900;
+	text-align: center;
+	text-shadow: 0 0 15px #fff;
+	color: #A31ACB;
+	
 }
 .products-list{
 	display: table;
+	margin-left: 55px;
 	width: 100%;
 }
 
 
 
  .product-box{
+	
 	display: inline-table;
 	padding: 10px;
 	width: calc(90%/3 - 20px)!important;
 }
+.product-box:hover{
+	border-radius: 10px;
+	box-shadow: 0 0 8px 3px #EA047E;
+	
+}
+
 .product-box a{
 	text-decoration: none;
 }
@@ -199,7 +254,7 @@ button{
     padding: 25px;
     text-align: center;
     font-size: 15px;
-    color: #333;
+    color: #F11A7B;
    /*  width: calc(100% - 10px); 
      height: 35px;  */
 }
@@ -237,7 +292,7 @@ a{
 	width: 200px;
 }
 .pedido-img img{
-	width: 100%;
+	width: 90%;
 }
 .pedido-detalle{
 	padding: 10px;
