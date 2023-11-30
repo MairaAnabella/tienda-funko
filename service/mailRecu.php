@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
-$getmysql = new mysqlConexion();
-$getConexion = $getmysql->conexion();
+
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -13,11 +13,11 @@ require 'PHPMailer/SMTP.php';
 
 $email = $_POST["email"];
 $query = "SELECT * FROM usuarios WHERE email='$email'";
-$validaCorreo = mysqli_query($getConexion, $query);
+$validaCorreo = mysqli_query($con, $query);
 
 if ($validaCorreo === false) {
     // La consulta SQL falló
-    echo 'Error en la consulta: ' . mysqli_error($getConexion);
+    echo 'Error en la consulta: ' . mysqli_error($con);
 } else {
     if (mysqli_num_rows($validaCorreo) > 0) {
         $row = mysqli_fetch_assoc($validaCorreo); // Obtén la fila de datos del usuario
@@ -36,7 +36,7 @@ if ($validaCorreo === false) {
         $mail->Port       = 587;
 
         $correo = $row['email']; // Obtén el correo del usuario
-        $nombreUsuario = $row['nombreCompleto']; // Obtén el nombre del usuario
+        $nombreUsuario = $row['nombrecompleto']; // Obtén el nombre del usuario
 
         $mail->setFrom('39096699@itbeltran.com.ar', 'Pagina Web');
         $mail->addAddress($correo, $nombreUsuario);
@@ -53,7 +53,7 @@ if ($validaCorreo === false) {
                 <a href="http://localhost/ejemplos/Login/php/cambioClave.php">Actualizar contraseña</a>
                 <p>Luego de haber realizado la actualización podrá ingresar al sistema con su nueva contraseña.</p>
                 <p>Atte.</p>
-                <p><b>SiUF Hotel.</b></p>
+                <p><b>Tienda funko</b></p>
             </body>
         </html>';
 
@@ -69,15 +69,3 @@ if ($validaCorreo === false) {
 
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <p>hola</p>
-</body>
-</html>

@@ -1,3 +1,4 @@
+
 <header>
 	<div class="logo-place"><a href="index.php"><img src="assets/logo.png"></a></div>
 	<div class="search-place">
@@ -6,9 +7,9 @@
 	</div>
 	<div class="options-place">
 		<?php
-		if (isset($_SESSION['codusu'])) {
+		if (isset($_SESSION['cod'])) {
 			echo
-			'<div class="item-option" onclick="mostrar_opciones()"><i class="fa fa-user" aria-hidden="true"></i><p>'.$_SESSION['nomusu'].'</p></div>';
+			'<div class="item-option" onclick="mostrar_opciones()"><i class="fa fa-user-circle-o" aria-hidden="true"></i><p>'.$_SESSION['user'].'</p></div>';
 		}else{
 		?>
 		<div class="item-option" title="Ingresar">
@@ -36,7 +37,7 @@
 </script>
 <div class="menu-opciones" id="ctrl-menu" style="display: none;">	
 	<?php
-	if (isset($_SESSION['codusu'])) {
+	if (isset($_SESSION['cod'])) {
 	?>
 	<ul>
 		<li>

@@ -25,7 +25,7 @@
 					<h1 id="idprice">S/. 35.<span>99</span></h1>
 					<h3 id="iddescription">Descripcion del producto</h3>
 					
-					<button class="pulse" onclick="iniciar_compra()">Comprar</button>
+					<button class="raise" onclick="iniciar_compra()">Comprar</button>
 				</div>
 			</section>
 			<div class="title-section">Productos destacados</div>
@@ -81,7 +81,7 @@
 		}
 		function iniciar_compra(){
 			$.ajax({
-				url:'servicios/compra/validar_inicio_compra.php',
+				url:'service/compra/validar_inicio_compra.php',
 				type:'POST',
 				data:{
 					codpro:p

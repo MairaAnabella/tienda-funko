@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,14 +20,14 @@
                 <h3>¿Ya tenes cuenta?</h3>
                 <p>Inicia sesión con tu cuenta</p>
                
-               <button id="btnInicioSesion">Inicia sesión</button>
+               <button id="btnInicioSesion" class="raise">Inicia sesión</button>
             </div>
             <div class="contenedorRegistrarse">
                 <!--CONTENEDOR DE MENSAJE REGISTRARSE-->
                 <h3>¿Aun no tienes cuenta?</h3>
                 <p>Registrate para iniciar sesión</p>
                
-                <button id="btnRegistrarse">Registrarse</button>
+                <button id="btnRegistrarse" class="raise">Registrarse</button>
             </div>
         </div> <!--Fin de Contenedor De Fondo-->
 
@@ -52,7 +55,7 @@
 							}
 						}
 					?>
-               <button type="submit" id="btnentrar">Entrar</button>
+               <button type="submit" id="btnentrar" class="raise">Entrar</button>
                 <p id="olvidasteContra">¿Olvidaste tu contraseña?</p>
             </form>
             <!--FORMULARIO DE REGISTRO-->
@@ -63,14 +66,14 @@
                 <input type="text" placeholder="Usuario" name="user" id="user">
                 <input type="password" placeholder="Contraseña"  name="password" >
                 
-                <button  id="btnregistrar">Regístrarse</button>
+                <button  id="btnregistrar" class="raise">Regístrarse</button>
             </form>
             <!--FORMULARIO RESTABLECER CONTRASEÑA-->
             <form action="service/mailRecu.php" class="restablecerContra" method="post" >
                 <h2>Restablecer contraseña</h2>
                 <input type="text" placeholder="Correo Electronico" name="email">
                
-               <button type="submit" id="btnReset">Restablecer</button>
+               <button type="submit" id="btnReset" class="raise">Restablecer</button>
 
             </form>
 

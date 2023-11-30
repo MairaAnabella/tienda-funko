@@ -12,17 +12,16 @@
 
 // incluyo el archivo php de conexion 
 include("conexion.php");
-// hacemos una instancia de la clase 
-$getmysql = new mysqlConexion();
+
 // llamo a la funcion de la clase que creamos en conexion
-$getConexion = $getmysql->conexion();
+
 include('valida.php');
 
-/*if ($getConexion) {
+if ($con) {
     echo "conectado a la base de datos";
 } else {
     echo "error";
-}*/
+}
 
 
 $nombreCompleto = $_POST["nombreC"];
@@ -36,7 +35,7 @@ $query = "INSERT INTO usuarios (nombreCompleto,email,usuario,contrasena) VALUES 
 
 //CREO LA SENTENCIA
 
-$sentencia = mysqli_prepare($getConexion, $query);
+$sentencia = mysqli_prepare($con, $query);
 // ingresar parametros para darle valor a las columnas
 //                  sentencia    tipo dato   valores
 mysqli_stmt_bind_param($sentencia, "ssss", $nombreCompleto, $email, $user, $passwordHash);
@@ -46,11 +45,11 @@ mysqli_stmt_bind_param($sentencia, "ssss", $nombreCompleto, $email, $user, $pass
 // validar que los datos no se repitan en la BD
 
 $query2="SELECT * FROM usuarios WHERE email='$email'" ;
-$validaCorreo=mysqli_query($getConexion,$query2);
+$validaCorreo=mysqli_query($con,$query2);
 validarEmail($validaCorreo);
 
 $query3="SELECT * FROM usuarios WHERE usuario='$user'";
-$validaUsuario=mysqli_query($getConexion,$query3);
+$validaUsuario=mysqli_query($con,$query3);
 validarUsuario($validaUsuario);
 
 
@@ -73,14 +72,14 @@ $afectado = mysqli_stmt_affected_rows($sentencia);
 if ($afectado == 1) {
    
     echo "<script>alert('Se ingreso el usuario $user correctamente'); 
-            location.href= '../index.php';
+            location.href= '../login.php';
         
         </script>";
 
 } else {
     
     echo "<script>alert('el usuario $user no se agrego correctamente'); 
-        location.href= '../index.php';
+        location.href= '../login.php';
     
     </script>";
 
@@ -89,7 +88,7 @@ if ($afectado == 1) {
 // cerrar la sentencia
 mysqli_stmt_close($sentencia);
 //cerramos la conexion
-mysqli_close($getConexion);
+
 
 
 

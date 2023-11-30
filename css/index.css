@@ -11,48 +11,46 @@ body,html{
 	margin: 0;
 	padding: 0;
 }
-.pulse:hover,
-.pulse:focus {
-  -webkit-animation: pulse 1s;
-          animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+.raise {
+    --color: #BC7AF9;
+    --hover: #9400FF;
 }
-@-webkit-keyframes pulse {
-	0% {
-	  box-shadow: 0 0 0 0 var(--hover);
-	}
-  }
-  
-  @keyframes pulse {
-	0% {
-	  box-shadow: 0 0 0 0 var(--hover);
-	}
-  }
-  .pulse {
-	--color: rgb(187, 110, 239);
-	--hover:#ef6eae ;
-  }
-  button {
-	background: none;
-	border: 2px solid;
-	border-radius: 4px;
-	font: inherit;
-	line-height: 1;
-	margin: 0.5em;
-	padding: 1em 2em;
-  }
-  button {
-	color: var(--color);
-	-webkit-transition: 0.25s;
-	transition: 0.25s;
-  }
-  button:hover, button:focus {
-	background-color: #000;
-	border-color: var(--hover);
-	color: #fff;
-  }
+
+button {
+    background: none;
+    border: 2px solid;
+    border-radius: 12px;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+}
+
+button {
+    color: var(--color);
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+}
+
+button:hover,
+button:focus {
+    border-color: var(--hover);
+    color: #9400FF;
+}
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    -webkit-transform: translateY(-0.25em);
+    transform: translateY(-0.25em);
+}
 body{
-	background-image: linear-gradient(to right top, #d09cfa, #c992f6, #c388f3, #bc7def, #b573eb);}
+	/* background-image: url(../imagenes/fondoLogin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; */
+	/* background-image: linear-gradient(to right top, #d09cfa, #c992f6, #c388f3, #bc7def, #b573eb); */}
 header{
 	height: 60px;
 	padding: 10px;
@@ -142,8 +140,9 @@ input:placeholder{
 .main-content{
 	margin-top: 60px;
 	width: 100%;
-	font-family: 'Sen', sans-serif;
+	
 }
+
 .content-page {
     margin: auto;
     padding: 10px;
@@ -160,8 +159,30 @@ input:placeholder{
     max-width: 1180px;
     flex-wrap: nowrap;
 }
+.content-page3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: auto;
+    padding: 10px;
+    width: calc(100% - 20px);
+    max-width: 1180px;
+}
+.body-pedidos {
+    /* Estilos para la lista de pedidos (space-list) */
+    /* Ajusta según sea necesario */
+    flex: 1;
+	margin-top: 5%;
+}
+.fomPago{
+	width: 40%;
+    display: grid;
+    align-content: stretch;
+    justify-content: end;
+}
 .content-page2 section{
 	display: flex;
+	justify-content: center;
 	background: #fff;
 }
 
@@ -171,7 +192,7 @@ input:placeholder{
 }
 .part1{
 	padding: 10px;
-	width: calc(60% - 20px);
+	width: 35%;
 }
 .part2{
 	padding: 10px;
@@ -202,7 +223,7 @@ input:placeholder{
 	font-weight: normal;
 }
 
-.title-section{
+.title-section ,.tittle-carrito{
 	margin: 15px;
 	padding: 10px 0; 
 	font-size: 35px;
@@ -283,10 +304,12 @@ a{
 	width: 100%;
 }
 .item-pedido{
-	display: flex;
-	border: 1px #ccc solid;
-	margin-bottom: 5px;
-	background: #fff;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px -1px 4px 0px #A31ACB;
+    margin-bottom: 5px;
+    background: #fff
 }
 .pedido-img{
 	width: 200px;

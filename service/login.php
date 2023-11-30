@@ -1,36 +1,38 @@
 <?php
 include("conexion.php");
+session_start(); // Inicia la sesión al principio del script
 
+if (isset($_POST["email"]) && isset($_POST["password"])) {
+    $email = $_POST["email"];
 
+    $query = "SELECT * FROM usuarios WHERE email='$email'";
 
+    $result = mysqli_query($con, $query);
 
-$email = $_POST["email"];
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        var_dump($row);
 
-
-$query = "SELECT usuario FROM usuarios WHERE email='$email' ";
-
-
-$ejecutar = mysqli_query($con, $query);
-
-if ($ejecutar) {
-    $row = mysqli_fetch_array($ejecutar);
-    $count = mysqli_fetch_array($ejecutar);
-    if ($count != 0) {
-        $password = $_POST["password"];
-        if ($row['password'] != $password) {
-            header('Location: ../login.php?e=3');
+        if ($row) {
+            $password = $_POST["password"];
+            echo password_verify($password, $row['contrasena']);
+            if (password_verify($password, $row['contrasena'])) {
+                $_SESSION['cod'] = $row['cod'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['user'] = $row['usuario'];
+                $_SESSION['nombreC'] = $row['nombrecompleto'];
+           
+                header('Location: ../'); // Redirige al usuario a la página principal
+            } else {
+                header('Location: ../login.php?e=3'); // Contraseña incorrecta
+            }
         } else {
-            session_start();
-            $_SESSION['codusu'] = $row['codusu'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['nombre'] = $row['nombre'];
-            header('Location: ../');
+            header('Location: ../login.php?e=2'); // Usuario no encontrado
         }
-    }else{
-        header('Location: ../login.php?e=2');
+    } else {
+        header('Location: ../login.php?e=1'); // Error en la consulta SQL
     }
-}else{
-	header('Location: ../login.php?e=1');
+} else {
+    // Manejar el caso en que no se hayan enviado las credenciales
+    header('Location: ../login.php?e=4');
 }
-
-
