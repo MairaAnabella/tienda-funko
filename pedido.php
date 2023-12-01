@@ -18,16 +18,19 @@
 <body>
 	<?php include("desing/header.php"); ?>
 	<div class="main-content">
-		<div class="content-page">
-			<h3>Mis pedidos</h3>
+		<div class="content-page3">
+			
 			<div class="body-pedidos" id="space-list">
 			</div>
-			<h3>Datos de pago</h3>
-			<div class="p-line"><div>MONTO TOTAL:</div>S/.&nbsp;<span id="montototal"></span></div>
+			<div class="fomPago">
+			<h3 class="tittle-carrito">Mis pedidos</h3>
+			<h3 >Datos de pago</h3>
+			<div class="p-line"><div>MONTO TOTAL:</div>$&nbsp;<span id="montototal"></span></div>
 			<div class="p-line"><div>Banco:</div>BCP</div>
 			<div class="p-line"><div>N° de Cuenta:</div>191-45678945-006</div>
 			<div class="p-line"><div>Representante:</div>Encargado de ventas</div>
 			<p><b>NOTA:</b> Para confirmar la compra debe realizar el deposito por le monto total, y enviar el comprobante al siguiente correo example@example.com o al número de whatsapp 999 666 333</p>
+		</div>
 		</div>
 	</div>
 	<?php /* include("layouts/_footer.php");  */?>
@@ -44,7 +47,7 @@
 					let monto=0;
 					for (var i = 0; i < data.datos.length; i++) {
 						html+=
-						'<div class="item-pedido">'+
+						'<div class="item-pedido" style="width:90% !important">'+
 							'<div class="pedido-img">'+
 								'<img src="assets/'+data.datos[i].rutimapro+'">'+
 							'</div>'+

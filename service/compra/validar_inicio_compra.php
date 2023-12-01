@@ -11,9 +11,9 @@ if (!isset($_SESSION['cod'])) {
 	$codusu=$_SESSION['cod'];
 	$codpro=$_POST['codpro'];
 	$sql="INSERT INTO pedido
-	(codusu,codpro,fecped,estado,total,email,telefono)
+	(codusu,codpro,fecped,estado,dirusuped,telusuped)
 	VALUES
-	($codusu,$codpro,now(),1,'','','')";
+	($codusu,$codpro,now(),1,'','')";
 	$result=mysqli_query($con,$sql);
 	if ($result) {
 		$response->state=true;

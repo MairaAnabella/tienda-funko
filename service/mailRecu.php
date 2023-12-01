@@ -50,7 +50,7 @@ if ($validaCorreo === false) {
             <body>
                 <h1>Hola ' . $nombreUsuario . ', haz solicitado recuperar la contraseña</h1>
                 <p>Haga click en el siguiente enlace para actualizar la contraseña:</p>
-                <a href="http://localhost/ejemplos/Login/php/cambioClave.php">Actualizar contraseña</a>
+                <p>Actualizar contraseña</p>
                 <p>Luego de haber realizado la actualización podrá ingresar al sistema con su nueva contraseña.</p>
                 <p>Atte.</p>
                 <p><b>Tienda funko</b></p>
@@ -58,7 +58,7 @@ if ($validaCorreo === false) {
         </html>';
 
         $mail->send(); // Envía el correo
-
+        header("location: login.php");   
         } catch (Exception $e) {
             echo '<div class="alert error" role="alert">NO SE PUDO ENVIAR EL ERROR ES EL SIGUIENTE: ' . $mail->ErrorInfo . '</div>';
         }

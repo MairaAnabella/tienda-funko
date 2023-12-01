@@ -45,11 +45,11 @@
 				<div class="menu-opcion">Carrito</div>
 			</a>
 		</li>
-		<li>
+		<!-- <li>
 			<a href="historial.php">
 				<div class="menu-opcion">Historial de compras</div>
 			</a>
-		</li>
+		</li> -->
 		<li>
 			<a href="pedido.php">
 				<div class="menu-opcion">Pedidos por pagar</div>

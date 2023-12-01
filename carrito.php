@@ -30,19 +30,19 @@ if (!isset($_SESSION['cod'])) {
 				<h3 class="tittle-carrito" style=" display: block; margin-top: 8%;">MI CARRITO</h3>
 				<p>Ingrese los datos para finalizar la compra. <br>Gracias!</p>
 				<div id="mensaje" style="display: none;">Su compra fue registrada</div>
-				<input class="ipt-procom" type="text" id="dirusu" placeholder="Dirección">
+				<input class="ipt-procom" type="text" id="dirusu" name="dirusu" placeholder="Dirección">
 				<br>
-				<input class="ipt-procom" type="text" id="telusu" placeholder="Celular">
+				<input class="ipt-procom" type="text" id="telusu" name= placeholder="Celular">
 				<br>
-				<h4>Tipos de pago</h4>
+				<h4 id='text'>Tipos de pago</h4>
 				<div class="metodo-pago">
 					<input type="radio" name="tipopago" value="1" id="tipo1">
-					<label for="tipo1">Pago por transferencia</label>
+					<label id='1' for="tipo1">Pago por transferencia</label>
 				</div>
-				<div class="metodo-pago">
+				<!-- <div class="metodo-pago">
 					<input type="radio" name="tipopago" value="2" id="tipo2">
-					<label for="tipo2">Pago con tarjeta de crédito/débito</label>
-				</div>
+					<label id='2' for="tipo2">Pago con tarjeta de crédito/débito</label>
+				</div> -->
 
 				<button onclick="procesar_compra()" style="margin-top: 5px;" class="raise">Procesar compra</button>
 			</div>
@@ -114,41 +114,45 @@ if (!isset($_SESSION['cod'])) {
 			});
 		}
 
-		function procesar_compra() {
-			let dirusu = document.getElementById("dirusu").value;
-			let telusu = $("#telusu").val();
-			let tipopago = 1;
-			if (document.getElementById("tipo2").checked) {
-				tipopago = 2;
-			}
-			if (dirusu == "" || telusu == "") {
+		function procesar_compra(){
+			let dirusu=document.getElementById("dirusu").value;
+			let telusu=$("#telusu").val();
+			let tipopago=1;
+			
+			
+			if (dirusu=="" || telusu=="") {
 				alert("Complete los campos");
-			} else {
-				if (!document.getElementById("tipo1").checked &&
-					!document.getElementById("tipo2").checked) {
-					alert("Seleccione un método de pago!");
-				} else {
-
-					var mensajeDiv = document.getElementById('mensaje');
-					mensajeDiv.style.display = 'block';
-					var direccion = document.getElementById('dirusu');
-					var celular = document.getElementById('telusu');
-					var tipoPago1 = document.getElementById('tipo1');
-					var tipoPago2 = document.getElementById('tipo2');
-
-					if (direccion && celular && tipoPago1 && tipoPago2) {
-						direccion.style.display = 'none';
-						celular.style.display = 'none';
-						tipoPago1.style.display = 'none';
-						tipoPago2.style.display = 'none';
+			}else{
+					if (tipopago==2) {
+						Culqi.open();
+					}else{
+						$.ajax({
+							url:'service/pedido/confirm.php',
+							type:'POST',
+							data:{
+								dirusu:dirusu,
+								telusu:telusu,
+								tipopago:tipopago,
+								token:''
+							},
+							success:function(data){
+								
+								 if (data.state) {
+									window.location.href="pedido.php";
+								}else{
+									alert(data.detail);
+								} 
+							},
+							error:function(err){
+								console.error(err);
+							}
+						});
 					}
-
-
 				}
 			}
-		}
+		
 	</script>
-
+ 
 
 </body>
 

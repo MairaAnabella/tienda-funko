@@ -3,7 +3,7 @@
 	$response=new stdClass();
 	include_once('../conexion.php');
 
-	$codusu=$_SESSION['codusu'];
+	$codusu=$_SESSION['cod'];
 	$dirusu=$_POST['dirusu'];
 	$telusu=$_POST['telusu'];
 	$tipopago=$_POST['tipopago'];
@@ -14,11 +14,13 @@
 	}else{
 		$estado=3;
 	}
+	
 
 	$sql="UPDATE pedido SET dirusuped='$dirusu',telusuped='$telusu',estado=$estado,token='$token'
 	where estado=1 and codusu=$codusu";
 	$result=mysqli_query($con,$sql);
 	if ($result) {
+		
 		$response->state=true;
 	}else{
 		$response->state=false;
@@ -28,4 +30,5 @@
 
 	mysqli_close($con);
 	header('Content-Type: application/json');
+	
 	echo json_encode($response);

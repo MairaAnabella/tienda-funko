@@ -30,9 +30,9 @@ while($row=mysqli_fetch_array($result)){
 	$obj->prepro=$row['precio'];
 	$obj->rutimapro=$row['rutaimagen'];
 	$obj->fecped=$row['fecped'];
-	$obj->estado=estado2texto($row['estado']);
-	$obj->dirusuped=utf8_encode($row['email']);
-	$obj->telusuped=$row['telefono'];
+	$obj->dirusuped=utf8_encode($row['dirusuped']);
+	$obj->telusuped=$row['telusuped'];
+	$obj->estado=estado2texto($row['estadoped']);
 	$datos[$i]=$obj;
 	$i++;
 }
@@ -40,5 +40,4 @@ $response->datos=$datos;
 
 mysqli_close($con);
 header('Content-Type: application/json');
-
 echo json_encode($response);

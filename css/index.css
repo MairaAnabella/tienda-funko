@@ -45,6 +45,7 @@ button:focus {
     transform: translateY(-0.25em);
 }
 body{
+	font-family: 'Nunito', sans-serif;
 	/* background-image: url(../imagenes/fondoLogin.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -99,7 +100,7 @@ input:placeholder{
 	border-radius: 15px 0 0 15px;
 	background-color: #fefefe;
 	border:1px solid #ccc;
-	width: calc(50% - 62px);
+	/* width: calc(50% - 62px); */
 	
 }
 .search-place input:placeholder{
@@ -115,8 +116,10 @@ input:placeholder{
 	cursor: pointer;
 }
 .btn-search{
-	width: 40px;
-	color: #EA047E;
+	width: 51px;
+    height: 42px;
+    color: #EA047E;
+    margin: 0;
 }
 .options-place{
 	width: 250px;
